@@ -14,11 +14,7 @@ public class OurProyect {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Hola mundo" );
-        System.out.println("commit working?");
-        System.out.println("commit working?");
-        System.out.println("commit working? version 2.0");
-        System.out.println("commit working? version 3.0");
+        System.out.println("Hello world");
         
        
     }
