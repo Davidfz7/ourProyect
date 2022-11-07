@@ -4,6 +4,8 @@
  */
 package ourproyect;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author david
@@ -184,6 +186,15 @@ public class Registro extends javax.swing.JFrame {
 
     private void save_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_userActionPerformed
         // TODO add your handling code here:
+           if(confirm_password.getText().equals("") || name_register.getText().equals("") || password_register.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Rellene la jugada", "Falta informacion", JOptionPane.WARNING_MESSAGE);
+
+        
+        }else{
+               
+               Usuario new_usuario = new Usuario (name_register.getText(), password_register.getText());
+               new_usuario.mostrarDatos();
+           }
     }//GEN-LAST:event_save_userActionPerformed
 
     private void go_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_go_backActionPerformed
@@ -199,6 +210,8 @@ public class Registro extends javax.swing.JFrame {
 
     private void password_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_registerActionPerformed
         // TODO add your handling code here:
+     
+        
     }//GEN-LAST:event_password_registerActionPerformed
 
     /**

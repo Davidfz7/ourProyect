@@ -11,15 +11,18 @@ import java.util.ArrayList;
  */
 public class Usuario {
     String nombre, password;
+    ArrayList<String> usuarios = new ArrayList();
     
     
     public Usuario(String name, String password){
         this.nombre = name;
         this.password = password;
+        usuarios.add(this.nombre);
+        usuarios.add(this.password);
     
     }
     
     public void mostrarDatos(){
-       JOptionPane.showMessageDialog(null, "Mi nombre es: " +this.nombre);
+        System.out.println(usuarios);
     }
 }
