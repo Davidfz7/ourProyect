@@ -3,22 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ourproyect;
-
+import javax.swing.JOptionPane;
+import java.util.ArrayList;
 /**
  *
  * @author david
  */
 public class Usuario {
-    String nombre, pais;
+    String nombre, password;
     
     
-    public Usuario(String name, String country){
+    public Usuario(String name, String password){
         this.nombre = name;
-        this.pais = country;
+        this.password = password;
     
     }
     
     public void mostrarDatos(){
-       System.out.println("Mi nombre es "+this.nombre);
+       JOptionPane.showMessageDialog(null, "Mi nombre es: " +this.nombre);
     }
 }
