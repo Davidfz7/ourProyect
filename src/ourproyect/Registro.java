@@ -4,6 +4,7 @@
  */
 package ourproyect;
 
+import ourproyect.Classes.SignUp;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author david
  */
 public class Registro extends javax.swing.JFrame {
-
+    SignUp newUsr = new SignUp();
     /**
      * Creates new form Registro
      */
@@ -189,17 +190,22 @@ public class Registro extends javax.swing.JFrame {
            if(confirm_password.getText().equals("") || name_register.getText().equals("") || password_register.getText().equals("")){
                 JOptionPane.showMessageDialog(null, "Rellene la jugada", "Falta informacion", JOptionPane.WARNING_MESSAGE);
 
-        
-        }else{
+       
+        }else if(!password_register.getText().equals(confirm_password.getText())){
+            JOptionPane.showMessageDialog(null, "Las contras son diferentes", "Escriba bien", JOptionPane.WARNING_MESSAGE);
+        } 
+           else{
                
-               Usuario new_usuario = new Usuario (name_register.getText(), password_register.getText());
-               new_usuario.mostrarDatos();
+               
+               newUsr.save_data(name_register.getText(), password_register.getText());
+               
            }
     }//GEN-LAST:event_save_userActionPerformed
-
+ 
     private void go_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_go_backActionPerformed
         // TODO add your handling code here:
         main go_back = new main();
+        newUsr.GoBackButton();
         go_back.show();
         dispose();
     }//GEN-LAST:event_go_backActionPerformed
