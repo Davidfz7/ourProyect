@@ -13,7 +13,7 @@ import java.sql.ResultSet;
  */
 public class SignUp {
     
-    Statement stm  = con.CreateStatement();
+    
     String nombre, password;
     ArrayList<ArrayList<String>> data_base = new ArrayList();
     ArrayList<String> users_names = new ArrayList();
