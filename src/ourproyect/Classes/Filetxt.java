@@ -11,12 +11,9 @@ import java.util.Arrays;
 public class Filetxt {
     String pathName = null;
     FileWriter theFile = null;
-    String data_into_array = null;
-    String[] AllData = null;
-    ArrayList<String> Users = new ArrayList<>();
-    ArrayList<String> Passwords = new ArrayList<>();
+   
     
-    Filetxt(String pathName){
+    public Filetxt(String pathName){
       this.pathName = pathName; 
     }
     public void writeData(String userName, String userPassword) throws IOException{
@@ -47,11 +44,17 @@ public class Filetxt {
         }   
 
      public void createFile() throws IOException{
+         //Esto no sirve xd´nt?
                 FileWriter theFile = new FileWriter(this.pathName);
+                
     }
      
      
      public  ArrayList<String> txtToArray() throws FileNotFoundException, IOException{
+                String data_into_array = null;
+                String[] AllData = null;
+                ArrayList<String> Users = new ArrayList<>();
+                ArrayList<String> Passwords = new ArrayList<>();
                 BufferedReader readingFile_toConvert = new BufferedReader(new FileReader(this.pathName));
                 data_into_array = readingFile_toConvert.readLine();
                 AllData = data_into_array.split(",");
@@ -66,7 +69,7 @@ public class Filetxt {
                 }
                 System.out.print("La de usuarios"+ Users);
                 System.out.print("\nlas contras"+ Passwords);
-                return data_inArray;
+                return Users;
             
      }
 }

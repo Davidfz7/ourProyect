@@ -4,15 +4,21 @@
  */
 package ourproyect;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import ourproyect.Classes.SignUp;
 import javax.swing.JOptionPane;
-
+import ourproyect.Classes.Filetxt;
+import ourproyect.main;
 /**
  *
  * @author david
  */
 public class Registro extends javax.swing.JFrame {
-    SignUp newUsr = new SignUp();
+    String path = System.getProperty("user.dir")+"/hola.txt";
+    Filetxt registro_file = new Filetxt(path); 
+    
     /**
      * Creates new form Registro
      */
@@ -187,6 +193,8 @@ public class Registro extends javax.swing.JFrame {
 
     private void save_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_userActionPerformed
         // TODO add your handling code here:
+        int count = 0;
+        
            if(confirm_password.getText().equals("") || name_register.getText().equals("") || password_register.getText().equals("")){
                 JOptionPane.showMessageDialog(null, "Rellene la jugada", "Falta informacion", JOptionPane.WARNING_MESSAGE);
 
@@ -195,17 +203,46 @@ public class Registro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Las contras son diferentes", "Escriba bien", JOptionPane.WARNING_MESSAGE);
         } 
            else{
+               try{
+               for (int i = 0; i<registro_file.txtToArray().size();i++){
+                if(registro_file.txtToArray().get(i).equals(name_register.getText())){
+                            JOptionPane.showMessageDialog(null, "Usuario ya registrado");
+                            count = 0;
+                        }else{
+                            count+=1;
+                            if(count >= registro_file.txtToArray().size()){
+                                break;
+                                
+                                
+                            }}
+                            
+                        }
+                 
+                        
                
+               }catch(Exception e){
+                   e.printStackTrace();
                
-               newUsr.save_data(name_register.getText(), password_register.getText());
-               
-           }
+               }
+               }
+        try {
+            if(count >= registro_file.txtToArray().size()){
+                try {
+                    registro_file.writeData(name_register.getText(), password_register.getText());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    
+                }
+                
+            }   
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_save_userActionPerformed
  
     private void go_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_go_backActionPerformed
         // TODO add your handling code here:
         main go_back = new main();
-        newUsr.GoBackButton();
         go_back.show();
         dispose();
     }//GEN-LAST:event_go_backActionPerformed
@@ -223,7 +260,7 @@ public class Registro extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void comandosRegistro() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
