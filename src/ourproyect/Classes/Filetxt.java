@@ -6,17 +6,18 @@ package ourproyect.Classes;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.nio.file.Files;
 
 public class Filetxt {
     String pathName = null;
     FileWriter theFile = null;
    
     
-    public Filetxt(String pathName){
+public Filetxt(String pathName){
       this.pathName = pathName; 
     }
-    public void writeData(String userName, String userPassword) throws IOException{
+public void writeData(String userName, String userPassword) throws IOException
+{
         File verifyFile = new File(this.pathName);
         BufferedWriter theFile = null;
         BufferedReader readingFile_toCheck = new BufferedReader(new FileReader(this.pathName));
@@ -43,21 +44,43 @@ public class Filetxt {
 
         }   
 
-     public void createFile() throws IOException{
+private void createFile() throws IOException
+{
          //Esto no sirve xd´nt?
-                FileWriter theFile = new FileWriter(this.pathName);
+    FileWriter theFile = new FileWriter(this.pathName);
                 
-    }
-     
-     
-     public  ArrayList<String> txtToArray() throws FileNotFoundException, IOException{
+}
+ 
+public  ArrayList<ArrayList> txtToArray() throws FileNotFoundException, IOException{
                 String data_into_array = null;
+                String variableY = null;
+                String variableX = null;
+                ArrayList<ArrayList> info_complete = new ArrayList<>();
                 String[] AllData = null;
                 ArrayList<String> Users = new ArrayList<>();
                 ArrayList<String> Passwords = new ArrayList<>();
                 BufferedReader readingFile_toConvert = new BufferedReader(new FileReader(this.pathName));
                 data_into_array = readingFile_toConvert.readLine();
+                variableY = data_into_array;
                 AllData = data_into_array.split(",");
+                variableX = variableY;
+                while(data_into_array != null)
+                {   
+                    
+                    data_into_array = readingFile_toConvert.readLine();
+                    if(data_into_array != null)
+                    {
+                    
+                    variableX += data_into_array;
+                    System.out.println(variableX);
+                    
+                    }else if(data_into_array == null){
+                        AllData = variableX.split(",");
+                        break;
+                    }
+                    
+                }
+                readingFile_toConvert.close();
                 ArrayList<String> data_inArray = new ArrayList<String>(Arrays.asList(AllData));
                 for(int i =0; i<data_inArray.size();i++){
                     if(i%2 == 0){
@@ -67,9 +90,9 @@ public class Filetxt {
                         Passwords.add(data_inArray.get(i));
                     }
                 }
-                System.out.print("La de usuarios"+ Users);
-                System.out.print("\nlas contras"+ Passwords);
-                return Users;
-            
+                info_complete.add(Users);
+                info_complete.add(Passwords);
+               
+                return info_complete;      
      }
 }

@@ -3,7 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ourproyect;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import ourproyect.Classes.Filetxt;
+import ourproyect.TravelTo;
 /**
  *
  * @author david
@@ -13,6 +18,8 @@ public class main extends javax.swing.JFrame {
     /**
      * Creates new form GUI
      */
+    String path = System.getProperty("user.dir")+"/hola.txt";
+    Filetxt registro_file = new Filetxt(path); 
     public main() {
         initComponents();
     }
@@ -238,15 +245,28 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_nameGUIActionPerformed
 
     private void log_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_log_inActionPerformed
-        // TODO add your handling code here:
-       String param1 = nameGUI.getText();
-       String param2 = passwordGUI.getText();
-       if (nameGUI.getText().equals("")){
-           JOptionPane.showMessageDialog(null, "Rellene los espacios", "Informacion incompleta", JOptionPane.WARNING_MESSAGE);
-       }else{
-        System.out.println("Hola mundo");
-       }
-       
+        try {
+            // TODO add your handling code here:
+            int cont = 0;
+            String param1 = nameGUI.getText();
+            String param2 = passwordGUI.getText();
+            if (nameGUI.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Rellene los espacios", "Informacion incompleta", JOptionPane.WARNING_MESSAGE);
+            }else{
+                for(int i = 0; i<registro_file.txtToArray().get(0).size();i++)
+                    {
+                    if(registro_file.txtToArray().get(0).get(i).equals(nameGUI.getText()) && registro_file.txtToArray().get(1).get(i).equals(passwordGUI.getText()))
+                    {
+                        TravelTo newTravel = new TravelTo();
+                        newTravel.show();
+                        dispose();
+                    }else{ cont += 1;} 
+            }
+            }
+            if(cont >= registro_file.txtToArray().get(0).size()){ JOptionPane.showMessageDialog(null, "Contra incorrecta o user no registrado");}
+        } catch (IOException ex) {
+            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
        
        

@@ -204,8 +204,8 @@ public class Registro extends javax.swing.JFrame {
         } 
            else{
                try{
-               for (int i = 0; i<registro_file.txtToArray().size();i++){
-                if(registro_file.txtToArray().get(i).equals(name_register.getText())){
+               for (int i = 0; i<registro_file.txtToArray().get(0).size();i++){
+                if(registro_file.txtToArray().get(0).get(i).equals(name_register.getText())){
                             JOptionPane.showMessageDialog(null, "Usuario ya registrado");
                             count = 0;
                         }else{
@@ -226,7 +226,7 @@ public class Registro extends javax.swing.JFrame {
                }
                }
         try {
-            if(count >= registro_file.txtToArray().size()){
+            if(count >= registro_file.txtToArray().get(0).size()){
                 try {
                     registro_file.writeData(name_register.getText(), password_register.getText());
                 } catch (Exception e) {
@@ -235,6 +235,11 @@ public class Registro extends javax.swing.JFrame {
                 }
                 
             }   
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            System.out.println(registro_file.txtToArray());
         } catch (Exception e) {
             e.printStackTrace();
         }
