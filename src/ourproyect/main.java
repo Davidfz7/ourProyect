@@ -160,7 +160,7 @@ public class main extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addGap(257, 257, 257)))
                 .addComponent(jLabel6)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addContainerGap(253, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +195,7 @@ public class main extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(log_in)
                     .addComponent(register))
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addContainerGap(278, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -238,6 +238,7 @@ public class main extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void nameGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameGUIActionPerformed
